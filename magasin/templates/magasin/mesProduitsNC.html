@@ -1,0 +1,44 @@
+{% extends 'acceuil.html' %}
+
+{% block title %} Catalogue de produits non-conformes {% endblock title %}
+
+{% block content %}
+
+<!-- body -->
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-12 mb-3 text-center">
+          <button class="btn btn-primary btn-md"> <a href="{% url 'home' %}"> retour vers l'acceuil</a></button>
+        </div>
+      </div>
+    <div class="row">
+        <div id='produitsNC' class="col-lg-9 mx-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Libellé</th>
+                        <th>Description</th>
+                        <th>Durée de garantie</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produitNC in produitsNC %}
+                    <tr>
+                        <td>{{ produitNC.id }}</td>
+                        <td>{{ produitNC.libelle }}</td>
+                        <td>{{ produitNC.description }}</td>
+                        <td>{{ produitNC.Duree_garantie }}</td>
+                        <td>
+                            <a href="{% url 'modifierProduitNC' produitNC.id %}" class="btn btn-sm btn-primary">Modifier</a>
+                            <a href="{% url 'supprimerProduitNC' produitNC.id %}" class="btn btn-sm btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

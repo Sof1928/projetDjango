@@ -1,0 +1,43 @@
+{% extends 'magasin/base.html' %}
+
+{% block title %} Catalogue de commandes {% endblock title %}
+
+{% block content %}
+
+<!-- body -->
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-12 mb-3 text-center">
+          <button class="btn btn-primary btn-md"> <a href="{% url 'home' %}"> retour vers l'acceuil</a></button>
+        </div>
+      </div>
+    <div class="row">
+        <div id='commandes' class="col-lg-9 mx-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Produits</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for commande in commandes %}
+                    <tr>
+                        <td>{{ commande.id }}</td>
+                        <td>{{ commande.dateCde }}</td>
+                        <td>{{ commande.totalCde }}</td>
+                        <td>{{ commande.produits }}</td>
+                        <td><a href="{% url 'modifierCommande' commande.id %}" class="btn btn-sm btn-primary">Edit</a></td>
+                        <td><a href="{% url 'supprimerCommande' commande.id %}" class="btn btn-sm btn-danger">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

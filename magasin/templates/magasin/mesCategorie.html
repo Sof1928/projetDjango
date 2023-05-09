@@ -1,0 +1,39 @@
+{% extends 'magasin/base.html' %}
+
+{% block title %} Catalogue de catégories {% endblock title %}
+
+{% block content %}
+
+<!-- body -->
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-12 mb-3 text-center">
+          <button class="btn btn-primary btn-md"> <a href="{% url 'home' %}"> retour vers l'acceuil</a></button>
+        </div>
+      </div>
+    <div class="row">
+        <div id='categories' class="col-lg-9 mx-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for categorie in categories %}
+                    <tr>
+                        <td>{{ categorie.id }}</td>
+                        <td>{{ categorie.name }}</td>
+                        <td><a href="{% url 'modifierCategorie' categorie.id %}" class="btn btn-primary btn-sm">Modifier</a></td>
+                        <td><a href="{% url 'supprimerCategorie' categorie.id %}" class="btn btn-danger btn-sm">Supprimer</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

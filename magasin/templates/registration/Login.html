@@ -1,0 +1,116 @@
+{% extends "magasin/base.html" %}
+{% block content %}
+<style>
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
+form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #3e8e41;
+}
+
+a {
+  color: #4CAF50;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #3e8e41;
+}
+
+.alert {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #f44336;
+  border-radius: 5px;
+  color: #f44336;
+  background-color: #f2dede;
+}
+
+.alert-success {
+  border-color: #4CAF50;
+  color: #4CAF50;
+  background-color: #dff0d8;
+}
+
+.alert-danger {
+  border-color: #f44336;
+  color: #f44336;
+  background-color: #f2dede;
+}
+
+small {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+small a {
+  margin-left: 5px;
+}
+
+</style>
+<h2>Se connecter </h2>
+<div>
+<form method="post">
+{% csrf_token %}
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class="alert alert-danger">{{ error }}</p>
+{% endfor %}
+{% endif %}
+<table>
+{% for field in form %}
+<tr>
+<td>{{ field.label_tag }}</td>
+<td>{{ field }}</td>
+</tr>
+{% endfor %}
+</table>
+<button type="submit">se connecter</button>
+</form>
+</div>
+<div>
+<small>
+Pas encore inscrit.e?
+<a href="{% url 'register' %}">
+S'inscrire
+</a>
+<br>
+Mot de passe oublié ?
+<a href="{% url 'password_reset' %}">
+Renouveler mon mot de passe
+</a>
+</small>
+</div>
+{% endblock %}

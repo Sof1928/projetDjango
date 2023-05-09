@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        img {
+            width: 70px;
+            height: 70px;
+          }
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            background-color: #fff;
+            border-collapse: collapse;
+            border-spacing: 0;
+          }
+          
+          .table th,
+          .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border: 1px solid #dee2e6;
+          }
+          
+          .table th {
+            font-weight: bold;
+            text-align: left;
+            background-color: #f7f7f7;
+          }
+          
+          .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+          }
+          
+          .table-hover tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.075);
+          }
+        body {
+          background-color: #f0f0f0;
+          color: #333;
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+          line-height: 1.5;
+        }
+        
+        a {
+          color: blue;
+          text-decoration: none;
+        }
+        
+        a:hover {
+          text-decoration: underline;
+        }
+        
+        h1, h2, h3 {
+          font-family: Georgia, serif;
+          font-weight: bold;
+          margin-top: 1em;
+          margin-bottom: 0.5em;
+        }
+        
+        p {
+          margin-top: 0;
+          margin-bottom: 1.5em;
+        }
+        
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+        
+        .container {
+          width: 90%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 2em;
+          background-color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+          text-align: center;
+          margin-bottom: 2em;
+        }
+        
+        .nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1em;
+          background-color: #333;
+          margin-bottom: 2em;
+        }
+        
+        .nav a {
+          color: white;
+          margin-right: 1em;
+        }
+        
+        .nav a:last-child {
+          margin-right: 0;
+        }
+        
+        .main {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+        
+        .main .item {
+          width: calc(33.33% - 1em);
+          margin-bottom: 2em;
+          padding: 1em;
+          background-color: #fff;
+          color: #333;
+          text-align: center;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main .item:hover {
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer {
+          text-align: center;
+          margin-top: 2em;
+          padding: 1em;
+          background-color: #333;
+          color: white;
+        }
+        
+        .footer p {
+          margin-bottom: 0;
+        }
+        textarea {
+            width: 25%;
+            height: 120px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            resize: vertical;
+          }
+          body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+          }
+          
+          .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            padding: 1em;
+            margin: 0 auto;
+          }
+          
+          .container > * {
+            flex: 1 1 auto;
+            margin: 1em;
+          }
+          button,e
+input[type="submit"] {
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+      </style>
+          
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>
+{% block title %} {% endblock %}
+</title>
+<link rel='stylesheet' type='text/css' media='screen' 
+href="{% static 'css/base.css'%}">
+{% block styles %} {% endblock %}
+</head>
+<body>    
+{% block content %}
+<ul class="navbar-nav ml-auto">
+  {% if user.is_authenticated %}
+  <li class="nav-item active">
+  <a class="nav-link" href="#">{{user}}</a>
+  </li>
+  <li class="nav-item active">
+  <a class="nav-link" href="#">Déconnexion</a>
+  </li>
+  {% else %}
+  <li class="nav-item active">
+  <a class="nav-link" href="#">Connexion</a>
+  </li>
+  <li class="nav-item active">
+  <a class="nav-link" href="#">Inscription</a>
+  </li>
+  {% endif %}
+  </ul>
+ {% endblock %}
+</body>
+</html>

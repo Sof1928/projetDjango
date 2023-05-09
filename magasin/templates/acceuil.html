@@ -1,0 +1,102 @@
+<!DOCTYPE html">
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<style>
+#navbar {
+  background-color: #333;
+  overflow: hidden;
+}
+
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar li {
+  float: left;
+  position: relative;
+}
+
+#navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#navbar li a:hover {
+  background-color: #111;
+}
+
+#navbar li ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  background-color: #333;
+  display: none;
+  z-index: 1;
+}
+
+#navbar li:hover ul {
+  display: block;
+}
+
+#navbar li ul li {
+  float: none;
+  position: relative;
+}
+
+#navbar li ul li a {
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+#navbar li ul li a:hover {
+  background-color: #111;
+}
+
+</style>
+</head>
+<body>
+   
+  <div id="navbar">
+    <nav>
+        <ul>
+            <li><a href="magasin/nouvFournisseur">Ajout d'un fournisseur</a></li>
+            <li><a href="magasin/nouvProduit">Ajout d'un produit</a></li> 
+            <li><a href="magasin/nouvCommande">Ajout d'une commande</a></li> 
+            <li><a href="magasin/nouvCategorie">Ajout d'une categorie</a></li> 
+            <li><a href="magasin/nouvProduitNC">Ajout d'un produit nc</a></li> 
+            <li>
+              <div class="search-bar">
+              <form method="GET" action="{% url 'search' %}">
+                  <input type="text" name="q" placeholder="Recherche d'un produit...">
+                  <button type="submit" >Recherche</button>
+              </form>
+          </div>
+          </li>
+        </ul>
+    </nav>
+</div>
+
+<div id="product-list">
+  {% for product in products %}
+  <table>
+    <tr id={{product.id}}>
+      <td><img src="/media/{{product.img}}" alt="{{product.libelle}}"></td>
+      <td>{{product.libelle}}</td>
+      <td>{{product.description}}</td>
+    </tr>
+  </table>
+  {% endfor %}
+</div>
+
+</body>
+</html>
